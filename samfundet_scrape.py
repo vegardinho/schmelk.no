@@ -3,7 +3,6 @@ from dateutil.easter import *
 from dateutil.rrule import *
 from dateutil.parser import *
 from datetime import *
-
 import urllib.request as url
 from bs4 import BeautifulSoup
 
@@ -134,9 +133,10 @@ def lag_lenke(kol, film):
     lenke = kol[0].find('a').get('href')
     lenke = "https://www.samfundet.no" + lenke
 
-    navn = navn.replace("[", "")
-    navn = navn.replace("]", "")
+    navn = navn.replace("[", "(")
+    navn = navn.replace("]", ")")
     navn = navn.replace("?", "")
+    navn = navn.replace("//", "-")
     navn = navn.replace("/", "")
     navn = navn.replace("’", "")
     navn = navn.replace("´", "")
