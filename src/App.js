@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider } from "@material-ui/core";
+import FrontPage from "./FrontPage";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Olopus",
+  },
+
+  palette: {
+    primary: {
+      light: "#c6582d",
+      main: "#8f2901",
+      dark: "#5c0000",
+      contrastText: "#ffffff",
+    },
+    secondary: {
+      light: "#ffcb8b",
+      main: "#ff9a5c",
+      dark: "#c86b2f",
+      contrastText: "#000000",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <FrontPage />;
+    </ThemeProvider>
   );
 }
 
