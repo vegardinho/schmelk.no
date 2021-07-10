@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import FrontPage from "./FrontPage";
-import Layout from "./Layout";
+import FrontPage from "./pages/FrontPage";
+import Layout from "./components/Layout";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const theme = createTheme({
   typography: {
@@ -26,9 +27,11 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
-        <FrontPage />;
-      </Layout>
+      <Router>
+        <Layout>
+          <FrontPage />;
+        </Layout>
+      </Router>
     </ThemeProvider>
   );
 }

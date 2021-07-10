@@ -1,5 +1,5 @@
-import logo from "./img/schmelk_logo.png";
-import bottle from "./img/bottle.png";
+import logo from "../img/schmelk_logo.png";
+import bottle from "../img/bottle.png";
 import {
   Button,
   Container,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => {
       width: "min(53vh, 85vw)",
       margin: "auto",
       display: "block",
-      paddingBottom: `min(10vw, ${theme.spacing(6)}px)`
+      paddingBottom: `min(10vw, ${theme.spacing(6)}px)`,
     },
 
     container: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => {
     menu: {
       display: "flex",
       justifyContent: "space-around",
-      flexWrap: 'wrap'
+      flexWrap: "wrap",
     },
   };
 });
@@ -65,8 +65,6 @@ const menuItems = [
   },
 ];
 
-
-
 const FrontPage = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -75,8 +73,8 @@ const FrontPage = () => {
   const breakpoints = {
     default: 3,
     [themeBreaks.md]: 2,
-    [themeBreaks.sm]: 1
-  }
+    [themeBreaks.sm]: 1,
+  };
 
   return (
     <Container className={classes.container} maxWidth="md">
@@ -84,24 +82,24 @@ const FrontPage = () => {
         <img src={logo} className={classes.logo} alt="logo" />
       </Link>
       <Container className={classes.menu}>
-{/*         <Masonry
+        {/*         <Masonry
           breakpointCols={breakpoints}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         > */}
-          {menuItems.map((item) => (
-            <Button
-              className={classes.button}
-              variant="contained"
-              disableElevation
-              color="secondary"
-              key={item.text}
-              endIcon={<ArrowForwardIosIcon color="primary" />}
-            >
-              <Typography color="primary">{item.text}</Typography>
-            </Button>
-          ))}
-{/*         </Masonry> */}
+        {menuItems.map((item) => (
+          <Button
+            className={classes.button}
+            variant="contained"
+            disableElevation
+            color="secondary"
+            key={item.text}
+            endIcon={<ArrowForwardIosIcon color="primary" />}
+          >
+            <Typography color="primary">{item.text}</Typography>
+          </Button>
+        ))}
+        {/*         </Masonry> */}
       </Container>
     </Container>
   );
