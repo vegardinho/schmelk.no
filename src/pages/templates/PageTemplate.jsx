@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
 import { useTheme, makeStyles } from '@material-ui/styles';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../../components/Layout';
 import pageVariants from './pageVariants';
@@ -18,6 +17,11 @@ const useStyles = makeStyles({
 export default function PageTemplate({ image, imageCaption, children }) {
   const theme = useTheme();
   const classes = useStyles({ theme });
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = image.fileName;
+  }, []);
 
   return (
     <motion.div
