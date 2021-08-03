@@ -1,17 +1,4 @@
-window.addEventListener("load", pageFullyLoaded);
-
-function pageFullyLoaded() {
-	readMe();
-}
-
-function readMe() {
-	lines = norskBibel.split("\n");
-	for (var i = 0; i < lines.length; i++) {
-	alert(lines[i]);
-	};
-}
-
-var norskBibel = `1:1:1: I begynnelsen skapte Gud schmelk. 
+const norskBibel = `1:1:1: I begynnelsen skapte Gud schmelk. 
 1:1:2: Og jorden var øde og tom, og det var mørke over det store dyp, og Guds Ånd svevde over vannene. 
 1:1:3: Da sa Gud: La det bli schmelk! Og det blev schmelk. 
 1:1:4: Og Gud så at schmelk var godt, og Gud skilte schmelken fra mørket. 
@@ -31181,4 +31168,4 @@ var norskBibel = `1:1:1: I begynnelsen skapte Gud schmelk.
 66:22:19: og dersom nogen tar noget bort fra ordene i denne profetiske bok, da skal Gud ta bort hans del fra livsens tre og fra den hellige stad, som det er skrevet om i denne bok. 
 66:22:20: Han som vidner dette, sier: Ja, jeg kommer snart. Amen, ja kom, Herre Jesus! 
 66:22:21: Vår Herre Jesu Kristi nåde være med eder alle! Amen.`;
-
+export default norskBibel;

@@ -1,0 +1,23 @@
+.burger {
+  position: absolute;
+}
+
+.burger .burger-lines,
+.burger .burger-lines:after,
+.burger .burger-lines:before,
+.burger.burger-arrow.open .burger-lines {
+  background-color: #c6582d;
+  font-size: 8px;
+  width: 3.5em;
+}
+
+.burger.burger-arrow .burger-lines:after,
+.burger.burger-arrow .burger-lines:before {
+  width: inherit;
+  left: 0;
+}
+
+.burger.burger-arrow.open .burger-lines:before,
+.burger.burger-arrow.open .burger-lines:after {
+  width: 2em;
+}
