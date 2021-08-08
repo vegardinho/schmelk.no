@@ -21,7 +21,7 @@ const snarveier = [
     external: true,
   },
   {
-    text: 'Barkonto',
+    text: 'Bar',
     path: {
       pathname: 'http://frank.riple.se',
     },
