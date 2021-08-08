@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     placeItems: 'center',
   },
 
-  image: {
+  text: {
     paddingBottom: ({ theme }) => theme.spacing(4),
   },
 
@@ -25,7 +25,6 @@ export default function LaDetBliSchmelk() {
   const bibleLines = norskBibel.split('\n');
   const [bibleLine, setBibleLine] = useState('');
   const [lineNo, setLineNo] = useState(0);
-  console.log(Math.floor(2.3));
 
   const nextLine = () => {
     if (lineNo <= bibleLines.length) {
@@ -42,7 +41,7 @@ export default function LaDetBliSchmelk() {
   return (
     <PageTemplate image={bible} imageCaption="bibelen">
       <div className={classes.container}>
-        <Typography className={classes.image}>{bibleLine}</Typography>
+        <Typography color="primary" className={classes.text}>{bibleLine}</Typography>
         <StyledButton handleClick={nextLine}>
           <Typography>Neste</Typography>
         </StyledButton>

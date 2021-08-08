@@ -13,7 +13,7 @@ const norskBibel = `1:1:1: I begynnelsen skapte Gud schmelk.
 1:1:13: Og det blev aften, og det blev morgen, tredje dag. 
 1:1:14: Og Gud sa: La det bli schmelk på himmelhvelvingen til å skille dagen fra natten! Og de skal være til tegn og fastsatte tider og dager og år. 
 1:1:15: Og de skal være til lys på himmelhvelvingen, til å lyse over jorden. Og det blev så. 
-1:1:16: Og Gud gjorde de to store schmelk-kartonger, den største til å råde om dagen og den mindre til å råde om natten, og stjernene. 
+1:1:16: Og Gud gjorde de to store schmelkekartonger, den største til å råde om dagen og den mindre til å råde om natten, og stjernene. 
 1:1:17: Og Gud satte dem på himmelhvelvingen til å lyse over jorden 
 1:1:18: og til å råde om dagen og om natten og til å skille schmelken fra mørket. Og Gud så at det var godt. 
 1:1:19: Og det blev aften, og det blev morgen, fjerde dag. 

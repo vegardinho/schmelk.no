@@ -34,6 +34,34 @@ const snarveier = [
     },
     external: true,
   },
+  {
+    text: 'Utskrift GA',
+    path: {
+      pathname: 'tollef.samfundet.no',
+    },
+    external: true,
+  },
+  {
+    text: 'Ressurser',
+    path: {
+      pathname: 'ressurser.schmelk.no',
+    },
+    external: true,
+  },
+  {
+    text: 'Sitat',
+    path: {
+      pathname: 'sitat.schmelk.no',
+    },
+    external: true,
+  },
+  {
+    text: 'Rapportering',
+    path: {
+      pathname: 'rapp.schmelk.no',
+    },
+    external: true,
+  },
 ];
 
 export default snarveier;
