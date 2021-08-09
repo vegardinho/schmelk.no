@@ -62,6 +62,13 @@ const snarveier = [
     },
     external: true,
   },
+  {
+    text: 'WIFI-setup',
+    path: {
+      'https://wlan.samfundet.no/',
+    },
+    external: true,
+  }
 ];
 
 export default snarveier;
