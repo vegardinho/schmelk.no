@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ButtonList({ items, setMenuOpened }) {
+export default function ButtonList({ items, children }) {
   const classes = useStyles();
 
   return (
@@ -20,6 +20,7 @@ export default function ButtonList({ items, setMenuOpened }) {
         // item.dynamicPath && <StyledButton handleEvent={item.dynamicPath}/>
         <LinkButton item={item} key={item.text} />
       ))}
+      <>{children}</>
     </Container>
   );
 }

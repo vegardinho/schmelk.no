@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     width: 'min(30vh, 85vw)',
     margin: 'auto',
     display: 'block',
-    marginBottom: ({ theme }) => `min(10vw, ${theme.spacing(6)}px)`,
+    marginBottom: ({ theme }) => `min(4vh, ${theme.spacing(6)}px)`,
   },
 });
 

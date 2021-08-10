@@ -65,10 +65,10 @@ const snarveier = [
   {
     text: 'WIFI-setup',
     path: {
-      'https://wlan.samfundet.no/',
+      pathname: 'https://wlan.samfundet.no/',
     },
     external: true,
-  }
+  },
 ];
 
 export default snarveier;

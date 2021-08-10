@@ -38,8 +38,6 @@ const useStyles = makeStyles({
 export default function StyledButton({ handleClick, arg, children }) {
   const theme = useTheme();
   const classes = useStyles({ theme });
-  console.log(handleClick);
-  console.log(arg);
 
   return (
     <Button
