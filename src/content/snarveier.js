@@ -1,4 +1,4 @@
-const snarveier = [
+const snarveierDict = [
   {
     text: 'Alltinget',
     path: {
@@ -92,4 +92,13 @@ const snarveier = [
   },
 ];
 
-export default snarveier;
+const getSortOrder = (prop) => (a, b) => {
+  if (a[prop].toLowerCase() > b[prop].toLowerCase()) {
+    return 1;
+  } if (a[prop].toLowerCase() < b[prop].toLowerCase()) {
+    return -1;
+  }
+  return 0;
+};
+
+export default snarveierDict.sort(getSortOrder('text'));
