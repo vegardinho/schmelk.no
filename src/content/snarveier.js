@@ -37,28 +37,28 @@ const snarveier = [
   {
     text: 'Utskrift GA',
     path: {
-      pathname: 'tollef.samfundet.no',
+      pathname: 'http://tollef.samfundet.no',
     },
     external: true,
   },
   {
     text: 'Ressurser',
     path: {
-      pathname: 'ressurser.schmelk.no',
+      pathname: 'http://ressurser.schmelk.no',
     },
     external: true,
   },
   {
     text: 'Sitat',
     path: {
-      pathname: 'sitat.schmelk.no',
+      pathname: 'http://sitat.schmelk.no',
     },
     external: true,
   },
   {
     text: 'Rapportering',
     path: {
-      pathname: 'rapp.schmelk.no',
+      pathname: 'http://rapp.schmelk.no',
     },
     external: true,
   },
@@ -66,6 +66,27 @@ const snarveier = [
     text: 'WIFI-setup',
     path: {
       pathname: 'https://wlan.samfundet.no/',
+    },
+    external: true,
+  },
+  {
+    text: 'h21',
+    path: {
+      pathname: 'http://h21.schmelk.no',
+    },
+    external: true,
+  },
+  {
+    text: 'v22',
+    path: {
+      pathname: 'http://v22.schmelk.no',
+    },
+    external: true,
+  },
+  {
+    text: 'v21',
+    path: {
+      pathname: 'http://v21.schmelk.no',
     },
     external: true,
   },
