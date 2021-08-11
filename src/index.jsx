@@ -7,7 +7,7 @@ import App from './App';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Olopus',
+    fontFamily: 'Olopus, Gochi Hand',
   },
 
   palette: {
