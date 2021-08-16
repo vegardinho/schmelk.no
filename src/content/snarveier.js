@@ -90,6 +90,13 @@ const snarveierDict = [
     },
     external: true,
   },
+  {
+    text: 'Foto',
+    path: {
+      pathname: 'http://foto.schmelk.no',
+    },
+    external: true,
+  },
 ];
 
 const getSortOrder = (prop) => (a, b) => {
