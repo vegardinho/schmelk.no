@@ -1,3 +1,5 @@
+#!python3
+
 from dateutil.relativedelta import *
 from dateutil.easter import *
 from dateutil.rrule import *
