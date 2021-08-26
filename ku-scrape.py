@@ -30,11 +30,13 @@ maaneder = {
     "desember": "12"
 }
 
+args = "Kunne ikke lese argumenter."
+syntaks = "Syntaks: <film/ku> <fra-dato> <til-dato>(valgfri)"
 
 def main():
     if len(sys.argv) < 3:
-        print("Kunne ikke lese argumenter.")
-        print("Syntaks: <film/ku> <fra-dato> <til-dato>(valgfri)")
+        print(args)
+        print(syntaks)
         return
 
     start_dato = sys.argv[2]
@@ -52,8 +54,8 @@ def main():
         type_arr = "KU-arrangementer"
         film = False
     else:
-        print("Kunne ikke lese argumenter.")
-        print("Syntaks: <film/ku> <fra-dato> <til-dato>(valgfri)")
+        print(args)
+        print(syntaks)
         return
 
     lag_oversikt(start_dato, slutt_dato, lenke, type_arr, film)
@@ -63,6 +65,7 @@ def lag_oversikt(start_dato, slutt_dato, lenke, type_arr, film):
         bruker_tid = TimeObject(start_dato, slutt_dato)
     except:
         print("ERROR: Ugyldig datoformat (\"{} {}\")".format(start_dato, slutt_dato))
+        print(syntaks)
         return
 
     print("Finner {} for perioden {}-{}".format(type_arr, bruker_tid.hent_fra_dato(), bruker_tid.hent_til_dato()))
@@ -133,6 +136,7 @@ def lag_lenke(kol, film):
     lenke = kol[0].find('a').get('href')
     lenke = "https://www.samfundet.no" + lenke
 
+    navn = navn.replace("m/", "med ")
     navn = navn.replace("[", "(")
     navn = navn.replace("]", ")")
     navn = navn.replace("?", "")
@@ -186,7 +190,7 @@ def oppdater_semester(fil, dato_obj):
             sem_str = "Høstprogram"
         else:
             sem_str = "Vårprogram"
-        fil.write("\n!! {} {}\n\n".format(sem_str, dette_aar))
+        fil.write("\n!!{} {}\n\n".format(sem_str, dette_aar))
 
         forrige_aar = dette_aar
         forrige_sem = dette_sem
