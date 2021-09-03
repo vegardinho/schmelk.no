@@ -7,7 +7,7 @@ import '@animated-burgers/burger-arrow/dist/styles.css';
 import './hamburger.css';
 
 import { Link } from 'react-router-dom';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import bottle from '../../img/favicon_pm.png';
 
 const useStyles = makeStyles((theme) => ({

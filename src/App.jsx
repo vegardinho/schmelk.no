@@ -5,6 +5,7 @@ import FrontPage from './pages/FrontPage';
 import Header from './components/Header';
 import Snarveier from './pages/Snarveier';
 import LaDetBliSchmelk from './pages/LaDetBliSchmelk';
+import EventScrape from './pages/EventScrape';
 
 function App() {
   const [siteLoaded, setSiteLoaded] = useState(false);
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/guds_ord">
             <LaDetBliSchmelk />
+          </Route>
+          <Route path="/event_scrape">
+            <EventScrape />
           </Route>
           <Route exact path="/">
             <FrontPage

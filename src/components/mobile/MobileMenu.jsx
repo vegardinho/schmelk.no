@@ -1,10 +1,9 @@
 import { makeStyles } from '@material-ui/core';
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion';
-import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 import menuItems from '../../content/menuItems';
 import LinkButton from '../simple/LinkButton';
 import logo from '../../img/schmelk.png';
-import schmelk_cow from '../../img/schmelk_cow_2.png';
 import cow from '../../img/cow.png';
 
 const useStyles = makeStyles((theme) => ({

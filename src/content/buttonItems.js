@@ -19,6 +19,10 @@ const buttonItems = [
     },
     external: true,
   },
+  {
+    text: 'Arrangements-scraper',
+    path: '/event_scrape',
+  },
 ];
 
 export default buttonItems;

@@ -19,6 +19,9 @@ export default function PageTemplate({ image, imageCaption, children }) {
   const classes = useStyles({ theme });
 
   useEffect(() => {
+    if (!image) {
+      return;
+    }
     const img = new Image();
     img.src = image.fileName;
   }, []);
