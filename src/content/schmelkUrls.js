@@ -5,6 +5,7 @@ const urls = [
   'https://www.cocio.com/en/',
   'https://www.oboy.no/produkter/oboy-original',
   'https://www.varden.no/nyheter/sjokomelk-handler-om-frihet-og-mangfold/',
+  'https://snl.no/Ludvig_Schmelck'
 ];
 
 export default urls;
