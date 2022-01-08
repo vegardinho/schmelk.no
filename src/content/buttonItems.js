@@ -18,11 +18,11 @@ const buttonItems = [
       pathname: 'http://korona.schmelk.no',
     },
     external: true,
-  },
+  }/*,
   {
     text: 'Arrangements-scraper',
     path: '/event_scrape',
-  },
+  },*/
 ];
 
 export default buttonItems;
