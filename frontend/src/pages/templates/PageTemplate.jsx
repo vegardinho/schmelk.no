@@ -34,7 +34,7 @@ export default function PageTemplate({ image, imageCaption, children }) {
       exit="exit"
     >
       <Layout>
-        <img src={image} className={classes.image} alt={imageCaption} />
+        {image && <img src={image} className={classes.image} alt={imageCaption} />}
         <>{children}</>
       </Layout>
     </motion.div>

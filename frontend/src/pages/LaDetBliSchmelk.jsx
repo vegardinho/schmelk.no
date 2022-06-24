@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 
   text: {
     paddingBottom: ({ theme }) => theme.spacing(4),
+    color: ({theme}) => theme.palette.primary.main
   },
 
 });
@@ -41,7 +42,7 @@ export default function LaDetBliSchmelk() {
   return (
     <PageTemplate image={bible} imageCaption="bibelen">
       <div className={classes.container}>
-        <Typography color="primary" className={classes.text}>{bibleLine}</Typography>
+        <Typography className={classes.text}>{bibleLine}</Typography>
         <StyledButton handleClick={nextLine}>
           <Typography>Neste</Typography>
         </StyledButton>

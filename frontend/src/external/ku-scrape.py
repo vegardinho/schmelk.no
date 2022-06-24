@@ -1,4 +1,4 @@
-#!python3
+#!/usr/bin/env python3
 
 from dateutil.relativedelta import *
 from dateutil.easter import *
@@ -33,7 +33,8 @@ maaneder = {
 }
 
 args = "Kunne ikke lese argumenter."
-syntaks = "Syntaks: <film/ku> <fra-dato> <til-dato>(valgfri)"
+syntaks =   """\nSyntaks: <film/ku> <fra-dato> [<til-dato>, bruker dagens dato hvis ikke oppgitt] 
+\nEks: "ku 21", "film 17.09.21 12.12.21\""""
 
 def main():
     if len(sys.argv) < 3:

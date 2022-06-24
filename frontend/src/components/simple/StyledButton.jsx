@@ -35,12 +35,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function StyledButton({ handleClick, arg, children }) {
+export default function StyledButton({
+  buttonType, handleClick, arg, children,
+}) {
   const theme = useTheme();
   const classes = useStyles({ theme });
 
   return (
     <Button
+      type={buttonType || null}
       onClick={(e) => handleClick(e, arg)}
       disableRipple
       className={classes.button}
