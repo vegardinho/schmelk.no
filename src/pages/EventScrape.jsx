@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import { Typography, TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@material-ui/core/styles';
-import { spawn } from 'child_process';
+import axios from 'axios';
 import PageTemplate from './templates/PageTemplate';
 import DesktopDate from '../components/simple/DesktopDate';
 import DropdownButton from '../components/simple/DropdownButton';
 import StyledButton from '../components/simple/StyledButton';
+import Modal from '../components/Modal';
 
 const useStyles = makeStyles({
   textfield: {
@@ -24,38 +25,60 @@ const useStyles = makeStyles({
 export default function EventScrape() {
   const theme = useTheme();
   const classes = useStyles({ theme });
-  const [textLoaded, setTextLoaded] = useState(false);
-  const [output, setOutput] = useState('');
+  const eventItems = ['KU', 'SSF'];
+  const [eventData, setEventData] = useState('');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
+  const [eventType, setEventType] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+  function getData() {
+    axios.post('/events', { fromDate, toDate, eventType })
+      .then((response) => {
+        const res = response.data;
+        setEventData(res.text);
+        navigator.clipboard.writeText(res.text);
+        setShowModal(true);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const py = spawn('python', ['../external/ku-scrape.py', 'KU 2019']);
-    let data2send;
-    py.stdout.on('data', (data) => {
-      data2send = data.toString();
-    });
-
-    console.log(data2send);
-    setTextLoaded(true);
-    setOutput('Har kjørt!');
+    if (fromDate === '') {
+      return;
+    }
+    if (toDate === '') {
+      return;
+    }
+    getData();
   };
 
   return (
     <PageTemplate>
-
+      <Modal showModal={showModal} alertClick={() => setShowModal(false)} />
       <form onSubmit={handleSubmit} className={classes.form}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack spacing={3}>
-            <DesktopDate label="Fra" />
-            <DesktopDate label="Til" />
-            <DropdownButton title="Type" items={['KU', 'SSF']} />
+            <DesktopDate label="Fra" handleDate={(date) => setFromDate(date)} />
+            <DesktopDate label="Til" handleDate={(date) => setToDate(date)} />
+            <DropdownButton
+              title="Type"
+              items={eventItems}
+              handleType={(type) => setEventType(eventItems[type].toLowerCase())}
+            />
             <StyledButton buttonType="submit" handleClick={() => {}}>
               <Typography>Kjør magi!</Typography>
             </StyledButton>
           </Stack>
         </LocalizationProvider>
       </form>
-      {textLoaded && <TextField defaultValue={output} className={classes.textfield} multiline maxRows={4} />}
     </PageTemplate>
   );
 }

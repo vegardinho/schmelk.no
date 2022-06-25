@@ -15,9 +15,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DropdownButton({ items, title }) {
+export default function DropdownButton({ items, title, handleType }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  handleType(value);
 
   return (
     <FormControl variant="outlined" className={classes.formControl}>
@@ -26,7 +27,10 @@ export default function DropdownButton({ items, title }) {
         labelId="demo-simple-select-outlined-label"
         id="demo-simple-select-outlined"
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => {
+          setValue(event.target.value);
+          handleType(event.target.value);
+        }}
         label="Type"
       >
         {items.map((item) => (

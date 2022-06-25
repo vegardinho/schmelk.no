@@ -1,12 +1,20 @@
 from flask import Flask
+from flask import request
+import arrow
+import ku_scrape
 
 api = Flask(__name__)
 
-@api.route('/events')
-def get_ku_events():
-    response_body = {
-        "name": "Nagato",
-        "about" :"Hello! I'm a full stack developer that loves python and javascript"
-    }
 
-    return response_body
+@api.route('/events', methods=['POST'])
+def get_events():
+    print(request.json['fromDate'])
+    from_arg = arrow.get(request.json['fromDate']).format('DD-MM-YY')
+    to_arg = arrow.get(request.json['toDate']).format('DD-MM-YY')
+    event_type = request.json['eventType']
+
+    ku_scrape.main([event_type, from_arg, to_arg])
+    with open('arr.txt', 'r') as fp:
+        text = fp.read()
+
+    return {'text': text}

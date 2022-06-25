@@ -32,28 +32,32 @@ maaneder = {
     "desember": "12"
 }
 
-args = "Kunne ikke lese argumenter."
-syntaks =   """\nSyntaks: <film/ku> <fra-dato> [<til-dato>, bruker dagens dato hvis ikke oppgitt] 
+args_err = "Kunne ikke lese argumenter."
+syntaks = """\nSyntaks: <film/ku> <fra-dato> [<til-dato>, bruker dagens dato hvis ikke oppgitt] 
 \nEks: "ku 21", "film 17.09.21 12.12.21\""""
 
-def main():
-    if len(sys.argv) < 3:
-        print(args)
+
+def main(args=None):
+    if not args:
+        args = sys.argv[1:]
+
+    if len(args) < 2:
+        print(args_err)
         print(syntaks)
         return
 
-    start_dato = sys.argv[2]
-    if len(sys.argv) == 3:
+    start_dato = args[1]
+    if len(args) == 3:
         slutt_dato = date.today().strftime("%d.%m.%Y")
     else:
-        slutt_dato = sys.argv[3]
+        slutt_dato = args[2]
 
-    if sys.argv[1] == "film":
+    if args[0] == "film":
         lenke = 'https://samfundet.no/arrangement/arkivsok?event_area=&event_type=movie&page='
         type_arr = "Filmklubbvisninger"
         film = True
-    elif sys.argv[1] == "ku":
-        lenke = "https://samfundet.no/arrangement/arkiv?page=" 
+    elif args[0] == "ku":
+        lenke = "https://samfundet.no/arrangement/arkiv?page="
         type_arr = "KU-arrangementer"
         film = False
     else:
@@ -63,15 +67,18 @@ def main():
 
     lag_oversikt(start_dato, slutt_dato, lenke, type_arr, film)
 
+
 def lag_oversikt(start_dato, slutt_dato, lenke, type_arr, film):
     try:
         bruker_tid = TimeObject(start_dato, slutt_dato)
     except:
-        print("ERROR: Ugyldig datoformat (\"{} {}\")".format(start_dato, slutt_dato))
+        print("ERROR: Ugyldig datoformat (\"{} {}\")".format(
+            start_dato, slutt_dato))
         print(syntaks)
         return
 
-    print("Finner {} for perioden {}-{}".format(type_arr, bruker_tid.hent_fra_dato(), bruker_tid.hent_til_dato()))
+    print("Finner {} for perioden {}-{}".format(type_arr,
+                                                bruker_tid.hent_fra_dato(), bruker_tid.hent_til_dato()))
     filnavn = "arr.txt"
 
     not_done = True
@@ -79,23 +86,24 @@ def lag_oversikt(start_dato, slutt_dato, lenke, type_arr, film):
 
     f = open(filnavn, 'w+')
     f.write("Arrangement i perioden {}-{}\n\n".format(bruker_tid.hent_fra_dato(),
-        bruker_tid.hent_til_dato()))
+                                                      bruker_tid.hent_til_dato()))
 
     print("Skriver til fil \"{}\"".format(filnavn))
 
     while not_done:
         samf_lenke = lenke + str(side_tall)
-        arr_igjen =  scrape_side(samf_lenke, bruker_tid, f, film)
+        arr_igjen = scrape_side(samf_lenke, bruker_tid, f, film)
         side_tall += 1
-
 
         if arr_igjen == False or side_tall > MAKS_PGS:
             not_done = False
             if side_tall > MAKS_PGS:
-                print("Nådd maksimumsgrense for antall parsede sider ({})".format(MAKS_PGS))
+                print(
+                    "Nådd maksimumsgrense for antall parsede sider ({})".format(MAKS_PGS))
     f.close()
 
     print("Filskriving vellykket")
+
 
 def scrape_side(lenke, bruker_tid, fil, film):
     samf_arr = url.urlopen(lenke)
@@ -134,6 +142,7 @@ def scrape_side(lenke, bruker_tid, fil, film):
 
     return True
 
+
 def lag_lenke(kol, film):
     navn = kol[0].string
     lenke = kol[0].find('a').get('href')
@@ -155,7 +164,7 @@ def lag_lenke(kol, film):
     navn = navn.replace("™", "")
     navn = navn.replace("&", "and")
 
-    indeks = navn.find(":");
+    indeks = navn.find(":")
     navn_lenke = ""
 
     if indeks == -1:
@@ -173,7 +182,6 @@ def lag_lenke(kol, film):
         navn_lenke = "{} [{} | {}]".format(navn[:indeks+1], tittel, lenke)
 
     return navn_lenke
-
 
 
 def oppdater_semester(fil, dato_obj):
@@ -198,6 +206,7 @@ def oppdater_semester(fil, dato_obj):
         forrige_aar = dette_aar
         forrige_sem = dette_sem
 
+
 def nytt_format(dato_streng):
     str_list = dato_streng.split()
 
@@ -208,12 +217,14 @@ def nytt_format(dato_streng):
     dato = "{}.{}.{}".format(dag, maaneder[str_list[1]], str_list[2][:-1])
     return dato
 
+
 def til_dato_obj(dato):
     try:
         dato = parse(dato, dayfirst=True)
     except ValueError:
         print("ERROR: Kunne ikke behandle datostreng \"{}\"".format(dato_streng))
     return dato
+
 
 class TimeObject:
     def __init__(self, fra_streng, til_streng):
@@ -238,9 +249,9 @@ class TimeObject:
         diff = relativedelta(self.til_dato, now)
 
         if self.til_dato > now:
-            print("Du har valgt en til-dato som ikke har funnet sted enda. Endrer til-dato til " 
-                    "dagens dato ({}.{}.{})".format(now.day, now.month, now.year))
-            self.til_dato = now;
+            print("Du har valgt en til-dato som ikke har funnet sted enda. Endrer til-dato til "
+                  "dagens dato ({}.{}.{})".format(now.day, now.month, now.year))
+            self.til_dato = now
 
     def hent_til_dato(self):
         return "{}.{}.{}".format(self.til_dato.day, self.til_dato.month, self.til_dato.year)
@@ -265,4 +276,6 @@ class TimeObject:
             print(e)
         return True
 
-main()
+
+if __name__ == "__main__":
+    main()
