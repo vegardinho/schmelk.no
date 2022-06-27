@@ -33,8 +33,8 @@ maaneder = {
 }
 
 args_err = "Kunne ikke lese argumenter."
-syntaks = """\nSyntaks: <film/ku> <fra-dato> [<til-dato>, bruker dagens dato hvis ikke oppgitt] 
-\nEks: "ku 21", "film 17.09.21 12.12.21\""""
+syntaks = """\nSyntaks: <ssf/ku> <fra-dato> [<til-dato>, bruker dagens dato hvis ikke oppgitt] 
+\nEks: "ku 21", "ssf 17.09.21 12.12.21\""""
 
 
 def main(args=None):
@@ -52,7 +52,7 @@ def main(args=None):
     else:
         slutt_dato = args[2]
 
-    if args[0] == "film":
+    if args[0] == "ssf":
         lenke = 'https://samfundet.no/arrangement/arkivsok?event_area=&event_type=movie&page='
         type_arr = "Filmklubbvisninger"
         film = True

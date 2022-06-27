@@ -13,16 +13,9 @@ const buttonItems = [
     path: '/guds_ord',
   },
   {
-    text: 'Korona',
-    path: {
-      pathname: 'http://korona.schmelk.no',
-    },
-    external: true,
-  }/*,
-  {
-    text: 'Arrangements-scraper',
-    path: '/event_scrape',
-  },*/
+    text: 'Arrangementshistorikk',
+    path: '/get_events',
+  },
 ];
 
 export default buttonItems;

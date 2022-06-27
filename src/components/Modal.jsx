@@ -11,7 +11,7 @@ const backdrop = {
 const modal = {
   hidden: { y: '-100vh', opacity: 0 },
   visible: {
-    y: '200px',
+    y: 'calc(50vh - 58%)',
     opacity: 1,
     transition: { delay: 0.5 },
   },
@@ -20,7 +20,7 @@ const modal = {
 const useStyles = makeStyles({
   backdrop: {
     position: 'fixed',
-    top: '0',
+    top: ({ theme }) => `-${theme.mixins.toolbar.minHeight}px`,
     left: '0',
     width: '100%',
     height: '100vh',
@@ -28,14 +28,22 @@ const useStyles = makeStyles({
     zIndex: '1',
   },
 
-  modal: {
-    maxWidth: '400px',
+  modal: ({ theme }) => ({
+
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '80vw',
+    },
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: '400px',
+    },
+
     margin: '0 auto',
     padding: '40px 20px',
-    background: ({ theme }) => theme.palette.secondary.light,
+    background: theme.palette.secondary.light,
     borderRadius: '10px',
     textAlign: 'center',
-  },
+    zIndex: '1',
+  }),
 
 });
 

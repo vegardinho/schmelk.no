@@ -30,7 +30,7 @@ function App() {
           <Route path="/guds_ord">
             <LaDetBliSchmelk />
           </Route>
-          <Route path="/event_scrape">
+          <Route path="/get_events">
             <EventScrape />
           </Route>
           <Route exact path="/">

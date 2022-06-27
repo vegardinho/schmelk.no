@@ -19,18 +19,48 @@ const useStyles = makeStyles({
 
   form: {
     marginBottom: ({ theme }) => theme.spacing(5),
+    width: '200px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
+
+  stack: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  datepicker: {
+    paddingTop: ({ theme }) => theme.spacing(1),
+    paddingBottom: ({ theme }) => theme.spacing(1),
+  },
+
+  title: ({ theme }) => ({
+    textAlign: 'center',
+    paddingTop: '4vh',
+    paddingBottom: theme.spacing(4),
+    maxWidth: '400px',
+    marginLeft: 'auto !important',
+    marginRight: 'auto !important',
+
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: '290px',
+      paddingTop: '15vh',
+      fontSize: '1.3rem !important',
+    },
+  }),
 });
 
 export default function EventScrape() {
   const theme = useTheme();
   const classes = useStyles({ theme });
-  const eventItems = ['KU', 'SSF'];
   const [eventData, setEventData] = useState('');
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [eventType, setEventType] = useState('');
   const [showModal, setShowModal] = useState(false);
+
+  const title = 'FINN ARRANGEMENTER';
 
   function getData() {
     axios.post('/events', { fromDate, toDate, eventType })
@@ -51,6 +81,7 @@ export default function EventScrape() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(eventType);
     if (fromDate === '') {
       return;
     }
@@ -62,23 +93,35 @@ export default function EventScrape() {
 
   return (
     <PageTemplate>
-      <Modal showModal={showModal} alertClick={() => setShowModal(false)} />
+      <Typography
+        variant="h5"
+        className={classes.title}
+      >
+        {title}
+      </Typography>
       <form onSubmit={handleSubmit} className={classes.form}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Stack spacing={3}>
-            <DesktopDate label="Fra" handleDate={(date) => setFromDate(date)} />
-            <DesktopDate label="Til" handleDate={(date) => setToDate(date)} />
+          <div className={classes.stack}>
+            <div>
+              <DesktopDate
+                label="Fra"
+                handleDate={(date) => setFromDate(date)}
+              />
+            </div>
+            <div className={classes.datepicker}>
+              <DesktopDate label="Til" handleDate={(date) => setToDate(date)} />
+            </div>
             <DropdownButton
               title="Type"
-              items={eventItems}
-              handleType={(type) => setEventType(eventItems[type].toLowerCase())}
+              handleType={(type) => setEventType(type)}
             />
             <StyledButton buttonType="submit" handleClick={() => {}}>
               <Typography>Kjør magi!</Typography>
             </StyledButton>
-          </Stack>
+          </div>
         </LocalizationProvider>
       </form>
+      <Modal showModal={showModal} alertClick={() => setShowModal(false)} />
     </PageTemplate>
   );
 }
