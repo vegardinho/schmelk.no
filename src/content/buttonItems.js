@@ -12,10 +12,10 @@ const buttonItems = [
     /*     icon: <AddCircleOutlined color="secondary" />, */
     path: '/guds_ord',
   },
-  {
+/*  {
     text: 'Arrangementshistorikk',
     path: '/get_events',
-  },
+  },*/
 ];
 
 export default buttonItems;
