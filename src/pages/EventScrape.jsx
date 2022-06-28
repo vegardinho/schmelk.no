@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@mui/styles';

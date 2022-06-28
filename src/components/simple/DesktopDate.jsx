@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import DatePicker from '@mui/lab/DatePicker';
+import { DatePicker } from '@mui/x-date-pickers';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@material-ui/core';
 
