@@ -33,7 +33,8 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Router forceRefresh={false}>
+      {/* TODO: replace forceRefresh with https://stackoverflow.com/questions/38839510/forcing-a-react-router-link-to-load-a-page-even-if-were-already-on-that-page/73415351#73415351 */}
+      <Router>
         <App />
       </Router>
     </ThemeProvider>
