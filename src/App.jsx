@@ -1,4 +1,6 @@
-import { Switch, Route, useLocation } from 'react-router-dom';
+import {
+  Routes, Route, useLocation, BrowserRouter,
+} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import FrontPage from './pages/FrontPage';
@@ -23,23 +25,20 @@ function App() {
       <AnimatePresence
         exitBeforeEnter
       >
-        <Switch location={location} key={location.key}>
-          <Route path="/snarveier">
-            <Snarveier />
-          </Route>
-          <Route path="/guds_ord">
-            <LaDetBliSchmelk />
-          </Route>
-          <Route path="/get_events">
-            <EventScrape />
-          </Route>
-          <Route exact path="/">
-            <FrontPage
-              siteLoaded={siteLoaded}
-              setSiteLoaded={setSiteLoaded}
-            />
-          </Route>
-        </Switch>
+        <Routes location={location} key={location.key}>
+          <Route path="snarveier" element={<Snarveier />} />
+          <Route path="/guds_ord" element={<LaDetBliSchmelk />} />
+          <Route path="/get_events" element={<EventScrape />} />
+          <Route
+            path="/"
+            element={(
+              <FrontPage
+                siteLoaded={siteLoaded}
+                setSiteLoaded={setSiteLoaded}
+              />
+          )}
+          />
+        </Routes>
       </AnimatePresence>
     </Header>
   );
